@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div th:if="${blogUploadSuccess}">
+    <h2 th:text="${blogUploadSuccess}"/>
+</div>
+
+
+<div>
+    <h1>Admin Console</h1>
+    <form method="POST" enctype="multipart/form-data" action="/files">
+        <table>
+            <tr><td>file to upload:</td><td><input type="file" name="file" multiple="multiple"/></td></tr>
+            <tr><td>title:</td><td><input type="text" id="imageTitle" name="imageTitle" /></td></tr>
+            <tr><td>url:</td><td><input type="text" id="siteUrl" name="siteUrl" /></td></tr>
+            <tr><td>type:</td>
+                <td>
+                    <select name="type">
+                        <option value="portfolio">Portfolio</option>
+                        <option value="blog">Blog</option>
+                    </select>
+                </td></tr>
+            <tr><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+    <form th:if="${type == 'blog'}" action="#" method="POST" th:action="@{/blog}" th:object="${blog}" id="blogForm">
+        <tr><td>title:</td><td><input type="text" id="title" name="title"/></td></tr>
+        <tr><td>description:</td><td><textarea form="blogForm" id="description" name="description"></textarea></td></tr>
+        <tr><td>type:</td><td><input type="text" id="type" name="type" th:value="${type}" /></td></tr>
+        <tr><td>images:</td><td><input type="text" id="imageName" name="imageName" th:value="${message}"/></td></tr>
+        <tr><td></td><td><input type="submit" value="submit" /></td></tr>
+    </form>
+</div>
+
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>
