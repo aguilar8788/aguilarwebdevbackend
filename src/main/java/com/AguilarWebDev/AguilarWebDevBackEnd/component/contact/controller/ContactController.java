@@ -23,7 +23,8 @@ public class ContactController {
         return contactRepo.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com/")
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity create(@RequestBody Contact contact) {
          return ResponseEntity.ok(

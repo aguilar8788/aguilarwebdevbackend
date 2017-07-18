@@ -17,13 +17,15 @@ public class BlogController {
     @Autowired
     private BlogRepository blogRepo;
 
-    @CrossOrigin("http://localhost:3000")
+//    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com/")
     @RequestMapping(method= RequestMethod.GET)
     public List<Blog> getAll() {
         return blogRepo.findAll();
     }
 
-    @CrossOrigin("http://localhost:3000")
+//    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com/")
     @RequestMapping(method= RequestMethod.POST)
     public String create(@ModelAttribute Blog blog, MetaData metaData, RedirectAttributes redirectAttributes) {
         String imageNames = blog.getImageName().toString().replaceAll("\\[", "").replaceAll("\\]","");
