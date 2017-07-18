@@ -25,6 +25,6 @@ public class BeanConfiguration extends AbstractMongoConfiguration {
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient(System.getenv("MONGODB_URI"), 27017);
+        return new MongoClient(System.getenv("MONGODB_URI"));
     }
 }
