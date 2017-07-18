@@ -52,7 +52,7 @@ public class FileUploadController {
         return "uploadForm";
     }
 //    @CrossOrigin("http://localhost:3000")
-    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com/")
+    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
     @GetMapping("/portfolio")
     public ResponseEntity<List<Work>> ListUploadedFiles() throws IOException {
 
