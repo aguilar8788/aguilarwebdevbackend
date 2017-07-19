@@ -17,6 +17,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -89,7 +90,6 @@ public class FileUploadController {
       }
        return ResponseEntity.badRequest().body(errorCatch);
     }
-
     @PostMapping("/files")
     public String  createOrUpdate(@RequestParam("file") MultipartFile[] files, RedirectAttributes redirectAttributes, MetaData postMetaData) {
         DBObject metaDataToBeStored = new BasicDBObject();
@@ -100,6 +100,8 @@ public class FileUploadController {
         try {
             List<String> fileNames = new ArrayList<>();
             for(MultipartFile file : files) {
+
+                System.out.println("hellerr" + file.getOriginalFilename());
                 Optional<GridFSDBFile> existing = maybeLoadFile(file.getOriginalFilename());
                 if (existing.isPresent()) {
                     gridFsTemplate.delete(getFilenameQuery(file.getOriginalFilename()));

@@ -7,12 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/contact")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ContactController {
 
     @Autowired
@@ -20,13 +22,14 @@ public class ContactController {
 
     @RequestMapping(method= RequestMethod.GET)
     public List<Contact> getAll() {
-        return contactRepo.findAll();
+        List<Contact> contact =  contactRepo.findAll();
+        return contact;
     }
 
-//    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
+//    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity create(@RequestBody Contact contact) {
+
          return ResponseEntity.ok(
         contactRepo.save(contact));
     }
