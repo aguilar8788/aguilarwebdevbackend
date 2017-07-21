@@ -14,7 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contact")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
 public class ContactController {
 
     @Autowired
@@ -26,7 +27,6 @@ public class ContactController {
         return contact;
     }
 
-//    @CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity create(@RequestBody Contact contact) {
 
