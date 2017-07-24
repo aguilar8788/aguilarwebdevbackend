@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/blog")
 //@CrossOrigin("http://localhost:3000")
-@CrossOrigin("https://aguilarwebdevelopment-63428.firebaseapp.com")
+@CrossOrigin("https://aguilarwebdevelopment.com")
 public class BlogController {
 
     @Autowired
