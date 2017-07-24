@@ -1,5 +1,6 @@
 package com.AguilarWebDev.AguilarWebDevBackEnd.component.contact.controller;
 
+import com.AguilarWebDev.AguilarWebDevBackEnd.component.SmtpMailSender;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.contact.model.Contact;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 
@@ -21,6 +23,9 @@ public class ContactController {
     @Autowired
     private ContactRepository contactRepo;
 
+    @Autowired
+    private SmtpMailSender smtpMailSender;
+
     @RequestMapping(method= RequestMethod.GET)
     public List<Contact> getAll() {
         List<Contact> contact =  contactRepo.findAll();
@@ -28,8 +33,14 @@ public class ContactController {
     }
 
     @RequestMapping(method= RequestMethod.POST)
-    public ResponseEntity create(@RequestBody Contact contact) {
-
+    public ResponseEntity create(@RequestBody Contact contact) throws MessagingException {
+        String contactName = contact.getFirstName() + contact.getLastName();
+        String contactPhoneNumber = contact.getPhoneNumber();
+        String contactCompany = "";
+        if(contact.getCompany() != null){
+           contactCompany = contact.getCompany();
+        }
+        smtpMailSender.send("peter.aguilar2287@gmail.com", "New Client to Contact", contactName + " " + contactPhoneNumber + " " + contactCompany);
          return ResponseEntity.ok(
         contactRepo.save(contact));
     }

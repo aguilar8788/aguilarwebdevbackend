@@ -1,5 +1,6 @@
 package com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.controller;
 
+import com.AguilarWebDev.AguilarWebDevBackEnd.component.SmtpMailSender;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.model.Blog;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.repository.BlogRepository;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.MetaData.MetaData;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class BlogController {
     private BlogRepository blogRepo;
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<Blog> getAll() {
+    public List<Blog> getAll() throws MessagingException {
         return blogRepo.findAll();
     }
 
