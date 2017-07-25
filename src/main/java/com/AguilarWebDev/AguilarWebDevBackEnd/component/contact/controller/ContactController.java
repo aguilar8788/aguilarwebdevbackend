@@ -52,7 +52,7 @@ public class ContactController {
 //        }
 
 
-       MailUtil.send("contact@aguilarwebdevelopment.com", "aguilarwebdevelopment@gmail.com", "new contact request", contactName + " " + contactPhoneNumber + " " + contactCompany);
+       MailUtil.send("contact@aguilarwebdevelopment.com", "aguilarwebdevelopment@gmail.com", "new contact request", "Please call " + contactName + " " + contactPhoneNumber + " " + contactCompany);
         return ResponseEntity.ok(
                 contactRepo.save(contact));
     }
