@@ -34,7 +34,7 @@ public class ContactController {
         String contactPhoneNumber = contact.getPhoneNumber();
         String contactCompany = "";
 
-        if(contact.getCompany() != null){
+        if(contact.getCompany() != ""){
             contactCompany = "with " + contact.getCompany();
         }
 
