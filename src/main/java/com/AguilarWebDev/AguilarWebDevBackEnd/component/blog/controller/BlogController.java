@@ -1,6 +1,5 @@
 package com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.controller;
 
-import com.AguilarWebDev.AguilarWebDevBackEnd.component.SmtpMailSender;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.model.Blog;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.repository.BlogRepository;
 import com.AguilarWebDev.AguilarWebDevBackEnd.component.blog.MetaData.MetaData;
