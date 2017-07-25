@@ -40,7 +40,7 @@ public class ContactController {
         if(contact.getCompany() != null){
            contactCompany = contact.getCompany();
         }
-        smtpMailSender.send("peter.aguilar2287@gmail.com", "New Client to Contact", contactName + " " + contactPhoneNumber + " " + contactCompany);
+//        smtpMailSender.send("peter.aguilar2287@gmail.com", "New Client to Contact", contactName + " " + contactPhoneNumber + " " + contactCompany);
          return ResponseEntity.ok(
         contactRepo.save(contact));
     }
