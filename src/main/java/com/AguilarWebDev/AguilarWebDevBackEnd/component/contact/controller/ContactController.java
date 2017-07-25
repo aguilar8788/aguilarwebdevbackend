@@ -33,24 +33,10 @@ public class ContactController {
         String contactName = contact.getFirstName() + " " + contact.getLastName();
         String contactPhoneNumber = contact.getPhoneNumber();
         String contactCompany = "";
-        if(contact.getCompany() != null){
-            contactCompany = contact.getCompany();
-        }
-//        SendGrid sendgrid = new SendGrid("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");
-//        SendGrid.Email welcomeMail = new SendGrid.Email();
-//        welcomeMail.addTo("aguilarwebdevelopment@gmail.com");
-//        welcomeMail.addToName("Peter Aguilar Jr.");
-//        welcomeMail.setFrom("contactRequest@aguilarwebdevelopment.com");
-//        welcomeMail.setSubject("New Contact Request");
-//        welcomeMail.setText("A new request for client contact has been created. Please follow up with " + contactName + " " + contactPhoneNumber + " " + contactCompany);
-//
-//        try {
-//            SendGrid.Response response = sendgrid.send(welcomeMail);
-//            System.out.println(response.getMessage());
-//        } catch (SendGridException sge) {
-//            sge.printStackTrace();
-//        }
 
+        if(contact.getCompany() != null){
+            contactCompany = "with " + contact.getCompany();
+        }
 
        MailUtil.send("contact@aguilarwebdevelopment.com", "aguilarwebdevelopment@gmail.com", "new contact request", "Please call " + contactName + " " + contactPhoneNumber + " " + contactCompany);
         return ResponseEntity.ok(
